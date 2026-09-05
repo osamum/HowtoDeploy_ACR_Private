@@ -6,15 +6,15 @@
 
 ## 準備
 
-ACR にサインインするためのコマンド `az acr login`を実行するには、実行するマシン上 Docker CLI と Docker daemon の両方が必要になるため Jump Box マシンに Docker のインストールが必要になります。
+ACR にサインインするためのコマンド `az acr login` を実行するには、実行するマシン上に Docker CLI と Docker daemon の両方が必要になるため、Jump Box マシンに Docker のインストールが必要になります。
 
-Docker Desktop のライセンスの有償、無償の条件を確認し、使用可能である場合は Jump Box マシンに [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) をインストールして使用することができるので、リンク先の案内に従って[インストール](https://docs.docker.com/desktop/setup/install/windows-install/#install-docker-desktop-on-windows)を行い、Docker サービスを起動してください。
+[Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) のライセンスの有償、無償の条件を確認し、使用可能である場合は Jump Box マシンに [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) をインストールして使用することができるので、リンク先の案内に従って[インストール](https://docs.docker.com/desktop/setup/install/windows-install/#install-docker-desktop-on-windows)を行い、Docker サービスを起動してください。
 
-Docker Desktop が使用できる場合は、次の手順はスキップしてください。
+Docker Desktop が使用できる場合は、次の手順はスキップして [ACR にログインしてイメージを push する](#acr-%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%97%E3%81%A6%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92-push-%E3%81%99%E3%82%8B) に進んでください。
 
 ### Docker Desktop が使用できない場合
 
-ライセンス等の関係で Docker Desktop が使用できない場合は、Windows Subsystem for Linux (WSL) をインストールし、そこに Docker Engine をインストールして Docker daemon を動かします。 
+ライセンス等の関係で Docker Desktop が使用できない場合は、[Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/ja-jp/windows/wsl/) をインストールし、そこに Docker Engine をインストールして Docker daemon を動かします。
 
 具体的な手順は以下のとおりです。
 
@@ -27,7 +27,7 @@ Docker Desktop が使用できる場合は、次の手順はスキップして�
     ```
     Get-ComputerInfo -Property HyperV*
     ```
-    結果に `HyperVisorPresent : True` と返れば Hyper-Visor が使用できるので問題ありません。もし、False の場合はここで作業を中断し、Jump Box の仮想マシンのサイズを `Standard D2lds v5` などに変更してください。
+    結果に `HyperVisorPresent : True` と返れば Hyper-V が使用できるので問題ありません。もし、`False` の場合はここで作業を中断し、Jump Box の仮想マシンのサイズを `Standard D2lds v5` などに変更してください。
    
 3. WSL コマンドをインストールします
    
@@ -119,7 +119,7 @@ Jump Box のターミナル画面から Azure Container Registry (ACR) にログ
     ```
     docker images   
     ```
-4. イメージをレジストリにプッシュする前に、レジストリ ログイン サーバーの完全修飾名を持つ [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) コマンドを使用して、イメージにタグを付けを行います
+4. イメージをレジストリにプッシュする前に、レジストリ ログイン サーバーの完全修飾名を持つ [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) コマンドを使用して、イメージにタグ付けを行います
 
     この手順では、ACR をデプロイする際の \[ドメイン名ラベルのスコープ\] 設定で `セキュリティ保護なし` を選択しているので、以下のようにタグを付けます。
 
@@ -136,14 +136,14 @@ Jump Box のターミナル画面から Azure Container Registry (ACR) にログ
 
     ![ACR にプッシュした hello-world:v1 イメージ](img/EN-ACR_Repos.png)
 
-    もし、Jump Box からアクセスしたにもかかわらず、リポジトリの一覧の表示でエラーがでる場合は、対象の ACR インスタンスの \[ Access control (IAM)\] で現在使用しているアカウントに以下のロールを付与してみてください。
+    もし、Jump Box からアクセスしたにもかかわらず、リポジトリの一覧の表示でエラーが出る場合は、対象の ACR インスタンスの \[Access control (IAM)\] で現在使用しているアカウントに以下のロールを付与してみてください。
 
     * `Container Registry Repository Catalog Lister`
     * `Container Registry Repository Contributor`
 
 ここまでの手順で、デプロイした ACR にログインしコンテナ イメージをプッシュすることができました。
 
-なお、より詳細な方法ついては以下のドキュメントを参照してください。
+なお、より詳細な方法については以下のドキュメントを参照してください。
 
 * [**クイック スタート: Azure portal を使用して Azure コンテナー レジストリを作成する**](https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-get-started-portal?tabs=azure-cli)
 

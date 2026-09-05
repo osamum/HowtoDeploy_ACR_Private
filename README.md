@@ -1,3 +1,5 @@
+\[[In English](#build-a-private-azure-container-registry-acr-in-an-azure-virtual-network)\]
+
 # Azure の仮想ネットワークに閉域化された Azure Container Registry (ACR) を構築する
 
 Azure の仮想ネットワークのリソースにのみサービスを提供する [Azure Container Registry (ACR)](https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-intro) を構築するための手順を説明します。
@@ -31,8 +33,6 @@ Azure の仮想ネットワークのリソースにのみサービスを提供�
 3. [Jump Box から ACR へのサインインとイメージの Push](jp-ex03.md)
 
 <br>
-
-\[In English\]
 
 # Build a Private Azure Container Registry (ACR) in an Azure Virtual Network
 

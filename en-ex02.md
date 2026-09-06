@@ -29,7 +29,7 @@ The ACR deployed in this step can be managed only through the Jump Box in the vi
 
     |Setting|Value|
     |:---|:---|
-    |Registry name \*|`pocacrpriv\<unique-value\>`|
+    |Registry name \*|`pocacrpriv<unique-value>`|
     |Location \*|\[**(Asia Pacific) Japan West**\]|
     |Domain name label scope \*|\[**Unsecure**\]|
     |Availability zones|Not selected|

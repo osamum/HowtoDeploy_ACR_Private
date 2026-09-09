@@ -80,6 +80,11 @@ Follow these steps.
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
     ```
+    Run the following command to install the modules that WSL is missing in order to execute the subsequent commands:
+
+    ```
+    apt install util-linux-extra
+    ```
 
     Then complete the instructions through **step 3** in the following document.
 

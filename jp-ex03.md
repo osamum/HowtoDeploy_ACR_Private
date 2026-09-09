@@ -35,6 +35,8 @@ Docker Desktop が使用できる場合は、次の手順はスキップして [
    wsl --install
    ```
 
+   インストールが完了したら Jump Box マシンを再起動します。
+
 4. Linux ディストリビューションとして Ubuntu をインストールします
 
     ```
@@ -78,6 +80,12 @@ Docker Desktop が使用できる場合は、次の手順はスキップして [
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
     ```
+    以下のコマンドを実行して、以降実施するコマンドを実行するのに WSL に不足しているモジュールをインストールします
+
+    ```
+    apt install util-linux-extra
+    ```
+    
     続けて、以下のドキュメントの**ステップ 3 まで**を実行します。
 
     * [**Manage Docker as a non-root user**](https://docs.docker.com/engine/install/linux-postinstall/)
